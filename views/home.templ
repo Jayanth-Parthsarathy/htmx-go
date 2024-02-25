@@ -1,0 +1,43 @@
+package views
+
+import "github.com/Jayanth-Parthsarathy/htmx-go/config"
+
+templ Home(notes []config.Note) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+			<link rel="stylesheet" href="/static/css/output.css"/>
+			<title>HTMX Notes App</title>
+		</head>
+		<body>
+			<div class="h-full w-full">
+				<h1 class="text-4xl">Your notes</h1>
+				<div hx id="response-div">
+					for _, item := range notes {
+						<div>
+							<h4>{ item.Title }</h4>
+							<p>{ item.Content }</p>
+						</div>
+					}
+				</div>
+				<div>
+					<h1>Create a Note</h1>
+					<form hx-post="/new-note" hx-target="#response-div" hx-swap="beforeend">
+						<label for="title">Title of the note</label>
+						<input id="title" name="title" placeholder="Title"/>
+						<br/>
+						<br/>
+						<label for="content">Content of the note</label>
+						<input id="content" name="content" placeholder="Content"/>
+						<br/>
+						<br/>
+						<button type="submit">Submit</button>
+					</form>
+				</div>
+			</div>
+		</body>
+	</html>
+}
