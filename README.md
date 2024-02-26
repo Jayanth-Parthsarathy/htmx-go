@@ -2,12 +2,6 @@
 
 This is a simple notes application built with a Golang backend and HTMX on the frontend.
 
-## Features
-
-- Create, read, update, and delete notes.
-- Minimalistic design for easy note-taking.
-- Seamless interaction with HTMX for dynamic updates without page reloads.
-
 ## Technologies Used
 
 - **Backend**: Golang
