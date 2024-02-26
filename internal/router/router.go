@@ -9,7 +9,6 @@ import (
 func Init() {
 	r := gin.Default()
 	r.HTMLRender = renderer.Default
-	r.Static("/static", "./static")
 	r.SetTrustedProxies(nil)
 	r.GET("/", handlers.DisplayNotes)
 	r.POST("/new-note", handlers.AddNote)

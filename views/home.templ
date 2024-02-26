@@ -10,7 +10,6 @@ templ Home(notes []config.Note) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-  <link rel="stylesheet" href="/static/css/output.css" />
   <title>HTMX Notes App</title>
   <style>
     .note-container {
@@ -65,9 +64,9 @@ templ Home(notes []config.Note) {
   </style>
 </head>
 
-<body class="">
-  <div class="">
-    <h1 class="">Your notes</h1>
+<body>
+  <div>
+    <h1>Your notes</h1>
     <div id="response-div">
       for _, item := range notes {
       <div class="note-container">
