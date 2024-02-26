@@ -3,41 +3,91 @@ package views
 import "github.com/Jayanth-Parthsarathy/htmx-go/config"
 
 templ Home(notes []config.Note) {
-	<!DOCTYPE html>
-	<html lang="en">
-		<head>
-			<meta charset="UTF-8"/>
-			<meta name="viewport" content="width=device-width, initial-scale=1"/>
-			<script src="https://unpkg.com/htmx.org@1.9.10"></script>
-			<link rel="stylesheet" href="/static/css/output.css"/>
-			<title>HTMX Notes App</title>
-		</head>
-		<body>
-			<div class="h-full w-full">
-				<h1 class="text-4xl">Your notes</h1>
-				<div hx id="response-div">
-					for _, item := range notes {
-						<div>
-							<h4>{ item.Title }</h4>
-							<p>{ item.Content }</p>
-						</div>
-					}
-				</div>
-				<div>
-					<h1>Create a Note</h1>
-					<form hx-post="/new-note" hx-target="#response-div" hx-swap="beforeend">
-						<label for="title">Title of the note</label>
-						<input id="title" name="title" placeholder="Title"/>
-						<br/>
-						<br/>
-						<label for="content">Content of the note</label>
-						<input id="content" name="content" placeholder="Content"/>
-						<br/>
-						<br/>
-						<button type="submit">Submit</button>
-					</form>
-				</div>
-			</div>
-		</body>
-	</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <link rel="stylesheet" href="/static/css/output.css" />
+  <title>HTMX Notes App</title>
+  <style>
+    .note-container {
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+
+    .note-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .note-content {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .note-form {
+      margin-top: 24px;
+    }
+
+    .note-form label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .note-form input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .note-form button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .note-form button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body class="">
+  <div class="">
+    <h1 class="">Your notes</h1>
+    <div id="response-div">
+      for _, item := range notes {
+      <div class="note-container">
+        <h4 class="note-title">{ item.Title }</h4>
+        <p class="note-content">{ item.Content }</p>
+      </div>
+      }
+    </div>
+    <div>
+      <h1 class="">Create a Note</h1>
+      <form class="note-form" hx-post="/new-note" hx-target="#response-div" hx-swap="beforeend">
+        <label for="title">Title of the note</label>
+        <input id="title" name="title" type="text" placeholder="Title" />
+        <label for="content">Content of the note</label>
+        <input id="content" name="content" type="text" placeholder="Content" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
 }

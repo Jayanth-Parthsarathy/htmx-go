@@ -9,10 +9,12 @@ import (
 	"os"
 )
 
+var db *sql.DB
+
 func Init() *sql.DB {
 	err := godotenv.Load(".env")
 	connStr := os.Getenv("DATABASE_URL")
-	db, err := sql.Open("postgres", connStr)
+	db, err = sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -33,5 +35,9 @@ func Init() *sql.DB {
 		log.Fatal(err)
 	}
 	fmt.Println("Connected to the PostgreSQL database!")
+	return db
+}
+
+func GetDB() *sql.DB {
 	return db
 }
